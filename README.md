@@ -14,7 +14,7 @@ Language: JAVA
 IDE: NetBeans 8.1
 <br><br>
 
-If u have any questions please contact me on : pprzybyt@gmail.com
+If u have any questions please contact me on pprzybyt@gmail.com
 
 <p align="center">
   <img src="FM1.png" width="350"/>
