@@ -5,29 +5,22 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import java.util.Collections;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 
-public class MyGame implements ActionListener, MouseListener, KeyListener//, Comparable
+public final class MyGame implements ActionListener, KeyListener//, Comparable
 {      
     public final int width=800, height=600;
     
@@ -48,14 +41,8 @@ public class MyGame implements ActionListener, MouseListener, KeyListener//, Com
     public ArrayList<ScoreList> scoreList;
     
     public Image obraz1 = new ImageIcon("marek.png").getImage();
-    
-   // public File imageFile = new File("marek.png");
-    
-   // public BufferedImage image;
-
-   
   
-    public MyGame () //throws FileNotFoundException
+    public MyGame () 
     {
         JFrame frame = new JFrame();
         Timer timer = new Timer(20, this);
@@ -66,10 +53,10 @@ public class MyGame implements ActionListener, MouseListener, KeyListener//, Com
         frame.add(renderer);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(width, height);
-        frame.addMouseListener(this);
         frame.addKeyListener(this);
         frame.setResizable(false);
         frame.setVisible(true);
+        frame.setLocationRelativeTo(null);
         
       bird = new Rectangle(width/2 - 10,height / 2 - 10,40,40);
       
@@ -81,56 +68,9 @@ public class MyGame implements ActionListener, MouseListener, KeyListener//, Com
       
       scoreList = new ArrayList<ScoreList>(); 
       
-  //    Collections.sort(scoreList);
-//      
-      
-        
-//        try {
-//            image = ImageIO.read(imageFile);
-//        } catch (IOException ex) {
-//            //System.err.println("ERROR");
-//             JOptionPane.showMessageDialog (null, "Nie załadowano obrazka", "Błąd", JOptionPane.WARNING_MESSAGE);
-//        }
-      
       timer.start();
-     
-      
-      
-//        file = new File("wyniki.txt");
-//        if(file.exists())
-//        {
-//            Scanner viewFile = new Scanner (file);
-//            int s;   
-//            String n;  
-//            
-//            while(viewFile.hasNext())
-//            {
-//                s=viewFile.nextInt();
-//                n=viewFile.next();
-//                scoreList.add(new ScoreList(s,n));
-//            }
-//            Collections.sort(scoreList);
-//        }
-        
-        
-     // if(!new File("wyniki.txt").exists())
-       // file = new File("C:\\Users\\Asus U30JC\\Desktop|\wyniki.txt");
-//        Scanner viewFile = new Scanner (file);
-//            int s;   
-//            String n;  
-//            
-//        while(viewFile.hasNext())
-//            {
-//                s=viewFile.nextInt();
-//                n=viewFile.next();
-//                scoreList.add(new ScoreList(s,n));
-//            }
     }
-    
-    /**
-     *
-     */
-
+  
     public void addName() 
 {
     
@@ -336,12 +276,6 @@ public void actionPerformed(ActionEvent e)
         
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e) 
-    {
-        jump();
-    }
-
      @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode()==KeyEvent.VK_SPACE)
@@ -349,41 +283,14 @@ public void actionPerformed(ActionEvent e)
            
         
     }
-    
-    @Override
-    public void mousePressed(MouseEvent e) {
-    }
 
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-    }
-
+ 
     @Override
     public void keyTyped(KeyEvent e) {
     }
 
-
     @Override
     public void keyReleased(KeyEvent e) {
     }
-
-//    public int compareTo(ScoreList s) 
-//    {
-//       int compare = s.score.compareTo(s.getScore());
-//       
-//    }
-
+  
 }
-
-//            if(gameOver)
-//            {
-//                bird.y= height - 120 - bird.height;
-//            }
